@@ -24,15 +24,11 @@ export default function Task({ item }: TaskLoadProps) {
 
     if (inp === "") {
       alert("nada escrito");
+      return;
     }
 
     if (!seccion?.user?.email || !seccion?.user?.name) {
       alert("erro de usuario");
-      return;
-    }
-
-    if (!inp) {
-      alert("digite algo ...");
       return;
     }
 
