@@ -12,6 +12,8 @@ import Form from "@/components/form";
 import { supabase } from "@/services/supabase/supabase";
 import { loadTask } from "@/services/supabase/loadTasks";
 import ShareButton from "@/components/shareButton";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]";
 
 type UserProps = {
   user: {
@@ -95,8 +97,8 @@ export default function Dashboard({ user }: UserProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session?.user) {
     return {
