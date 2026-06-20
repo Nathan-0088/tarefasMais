@@ -31,6 +31,11 @@ export default function Task({ item }: TaskLoadProps) {
       return;
     }
 
+    if (!inp) {
+      alert("digite algo ...");
+      return;
+    }
+
     const { error } = await supabase.from("comentarios").insert({
       coment: inp,
       user: seccion.user.name,
