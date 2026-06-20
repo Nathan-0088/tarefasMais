@@ -36,6 +36,7 @@ export default function Dashboard({ user }: UserProps) {
 
     const response = await loadTask(email);
     setTasks(response);
+    toast.success("Tarefa deletada");
   }
 
   return (

@@ -67,6 +67,7 @@ export default function Task({ item }: TaskLoadProps) {
   async function handleDelete(id: number) {
     await deltarComentario(id);
     await fetchComents();
+    toast.success("Comentario deletado")
   }
 
   useEffect(() => {
