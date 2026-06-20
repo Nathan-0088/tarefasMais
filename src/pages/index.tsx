@@ -55,6 +55,6 @@ export const getStaticProps: GetStaticProps = async () => {
       comentarios: comentariosCount ?? 0,
       posts: postsCount ?? 0,
     },
-    revalidate: 60,
+    revalidate: 43200,
   };
 };
