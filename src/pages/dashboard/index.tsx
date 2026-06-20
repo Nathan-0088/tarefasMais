@@ -14,6 +14,7 @@ import { loadTask } from "@/services/supabase/loadTasks";
 import ShareButton from "@/components/shareButton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
+import { toast } from "sonner";
 
 type UserProps = {
   user: {
@@ -29,7 +30,7 @@ export default function Dashboard({ user }: UserProps) {
   async function handleDelete(id: number) {
     const { error } = await supabase.from("tasks").delete().eq("id", id);
     if (error) {
-      alert("erro inesperado ao  excluir");
+      toast.error("erro inesperado ao  excluir");
       return;
     }
 

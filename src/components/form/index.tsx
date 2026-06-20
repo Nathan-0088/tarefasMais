@@ -9,6 +9,7 @@ import TextArea from "../textArea";
 import { supabase } from "@/services/supabase/supabase";
 import { TaskProps } from "@/types/tasks";
 import { loadTask } from "@/services/supabase/loadTasks";
+import { toast } from "sonner";
 
 type FormProps = {
   email: string;
@@ -23,7 +24,7 @@ export default function Form({ email, setTasks }: FormProps) {
     e.preventDefault();
 
     if (text === "") {
-      alert("digite algo");
+      toast.error("digite algo");
       return;
     }
 
@@ -35,7 +36,7 @@ export default function Form({ email, setTasks }: FormProps) {
 
     if (error) {
       console.log(error);
-      alert("nogg");
+      toast.error("Erro inesperado");
       return;
     }
 

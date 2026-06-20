@@ -8,6 +8,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { ComentariosProps } from "@/types/comentarios";
 import { BiTrash } from "react-icons/bi";
 import { deltarComentario } from "@/services/supabase/deleteComent";
+import { toast } from "sonner";
 
 type TaskLoadProps = {
   item: TaskProps;
@@ -23,12 +24,12 @@ export default function Task({ item }: TaskLoadProps) {
     e.preventDefault();
 
     if (inp === "") {
-      alert("nada escrito");
+      toast.success("Digite algo ...");
       return;
     }
 
     if (!seccion?.user?.email || !seccion?.user?.name) {
-      alert("erro de usuario");
+      toast.error("erro de usuario");
       return;
     }
 
@@ -40,7 +41,7 @@ export default function Task({ item }: TaskLoadProps) {
     });
 
     if (error) {
-      alert("no gg");
+      toast.error("erro inesperado tente novamente");
       return;
     }
 
